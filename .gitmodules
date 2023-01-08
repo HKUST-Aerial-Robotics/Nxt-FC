@@ -1,0 +1,6 @@
+[submodule "PX4-Autopilot"]
+	path = PX4-Autopilot
+	url = git@github.com:Peize-Liu/PX4-Autopilot.git
+[submodule "NxtPX4-Hardware"]
+	path = NxtPX4-Hardware
+	url = git@github.com:Peize-Liu/NxtPX4-Hardware.git
