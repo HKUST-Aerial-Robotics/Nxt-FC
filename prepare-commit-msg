@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+regularExpression="^\[(Feat|Fix|Refact|Merge|CI|Docker|Doc|Other)\]\[.+\]:\s?.+"
+error_msg="提交信息首行请按照如下格式书写:
+[Type][Module]: Description
+Type:Feat(新功能),Fix(修复),Refact(重构),Merge(合并),CI(代码集成管理),Docker(镜像管理),Doc(文档),Other(其他)
+Module: 对于哪一个模块的开发,driver(驱动),controller(控制),messager(ROS消息),other
+Description: 详细描述
+etc:
+[Feat][driver]: descirbe for test"
+
+#获取文件首行
+firstLine=`head -n1 "$1"`
+if [[ "$firstLine" =~ $regularExpression ]]; then
+    echo "Commit Success"
+    exit 0
+fi
+echo "Commit Fail"
+echo "$error_msg" >&2
+exit 1
