@@ -44,3 +44,23 @@ in v1.0.1 design, the original idea is to make ESC connector order weird, to mak
 * After test your own feature, mereged into develop branch and push a pull request (only general features will be accepted)
 
 update repo using script: `./update_all_repo.sh`
+
+### hardware quick start
+
+1. use QGroundControl connect to the uav
+
+![image-20230421132243504](image/README/image-20230421132243504.png)
+
+2. enter para ->System->RC Input  and **choose corresponding protocol**
+
+![image-20230421132324249](image/README/image-20230421132324249.png)
+
+3. serial map
+
+Search：serial ,**RC_PORT_CONFIG**, choose corresponding port
+
+![image-20230421132632281](image/README/image-20230421132632281.png)
+
+4. radio setup
+
+![image-20230421132923936](image/README/image-20230421132923936.png)
