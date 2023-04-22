@@ -14,7 +14,7 @@ on:
       - 'PX4-Autopilot'
 
 jobs:
-  Containerized compilation:
+  Containerized-compilation:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
