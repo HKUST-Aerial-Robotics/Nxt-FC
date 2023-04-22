@@ -23,9 +23,8 @@ jobs:
       run: git submodule update --init --recursive
     - name: Build Bootloader & PX4-Autopilot
       run: |
-        cd PX4-Autopilot
-        start_docker.sh hkust_nxt_bootloader
-        start_docker.sh hkust_nxt
+        PX4-Autopilot/start_docker.sh hkust_nxt_bootloader
+        PX4-Autopilot/start_docker.sh hkust_nxt
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
