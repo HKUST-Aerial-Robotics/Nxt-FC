@@ -1,0 +1,35 @@
+name: PX4-Autopilot(hkust_nxt) CI Test
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - '.github/workflows/px4-autopilot.yaml'
+      - 'PX4-Autopilot'
+      
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '.github/workflows/px4-autopilot.yaml'
+      - 'PX4-Autopilot'
+
+jobs:
+  Containerized compilation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Submodule update
+      run: git submodule update --init --recursive
+    - name: Build Bootloader & PX4-Autopilot
+      run: |
+        cd PX4-Autopilot
+        start_docker.sh hkust_nxt_bootloader
+        start_docker.sh hkust_nxt
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: hkust_nxt
+        path: |
+          PX4-Autopilot/build/hkust_nxt_default/hkust_nxt_default.px4
+          PX4-Autopilot/build/hkust_nxt_bootloader/hkust_nxt_bootloader.elf
