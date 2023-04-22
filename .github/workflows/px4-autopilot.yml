@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/px4-autopilot.yaml'
       - 'PX4-Autopilot'
-      
+
   pull_request:
     branches: [ "main" ]
     paths:
@@ -21,14 +21,19 @@ jobs:
       uses: actions/checkout@v3
     - name: Submodule update
       run: git submodule update --init --recursive
-    - name: Build Bootloader & PX4-Autopilot
-      run: |
-        PX4-Autopilot/start_docker.sh hkust_nxt_bootloader
-        PX4-Autopilot/start_docker.sh hkust_nxt
+
+    - name: Build Bootloader
+      run: PX4-Autopilot/start_docker.sh hkust_nxt_bootloader
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: hkust_nxt
-        path: |
-          PX4-Autopilot/build/hkust_nxt_default/hkust_nxt_default.px4
-          PX4-Autopilot/build/hkust_nxt_bootloader/hkust_nxt_bootloader.elf
+        name: hkust_nxt_bootloader
+        path: PX4-Autopilot/build/hkust_nxt_bootloader/hkust_nxt_bootloader.elf
+
+    - name: Build PX4-Autopilot
+      run: PX4-Autopilot/start_docker.sh hkust_nxt
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: hkust_nxt_default
+        path: PX4-Autopilot/build/hkust_nxt_default/hkust_nxt_default.px4
