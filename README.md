@@ -58,3 +58,23 @@ update repo using script: `./update_all_repo.sh`
 | ------------------------ | ------------------------------------------------------------ |
 | PX4-Autopilot(hkust_nxt) | ![PX4-Autopilot(hkust_nxt)](https://github.com/HKUST-Aerial-Robotics/NxtPX4/actions/workflows/px4-autopilot.yml/badge.svg?branch=main) |
 
+
+### hardware quick start
+
+1. use QGroundControl connect to the uav
+
+![image-20230421132243504](image/README/image-20230421132243504.png)
+
+2. enter para ->System->RC Input  and **choose corresponding protocol**
+
+![image-20230421132324249](image/README/image-20230421132324249.png)
+
+3. serial map
+
+Search：serial ,**RC_PORT_CONFIG**, choose corresponding port
+
+![image-20230421132632281](image/README/image-20230423132237374.png)
+
+4. radio setup
+
+![image-20230421132923936](image/README/image-20230421132923936.png)
