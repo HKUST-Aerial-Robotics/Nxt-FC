@@ -73,7 +73,7 @@ update repo using script: `./update_all_repo.sh`
 
 Search：serial ,**RC_PORT_CONFIG**, choose corresponding port
 
-![image-20230421132632281](image/README/image-20230421132632281.png)
+![image-20230421132632281](image/README/image-20230423132237374.png)
 
 4. radio setup
 
