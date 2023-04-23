@@ -35,8 +35,15 @@ in v1.0.1 design, the original idea is to make ESC connector order weird, to mak
 
 ### Compile
 
+#### Local compilation
+
 * Frameware compile: make hkust_nxt
 * bootloader compile: make hkust_nxt_bootloader
+
+#### Containerized compilation (recommended)
+
+* Frameware compile: start_docker.sh hkust_nxt
+* bootloader compile: start_docker.sh hkust_nxt_bootloader
 
 ### Develop
 
@@ -44,6 +51,13 @@ in v1.0.1 design, the original idea is to make ESC connector order weird, to mak
 * After test your own feature, mereged into develop branch and push a pull request (only general features will be accepted)
 
 update repo using script: `./update_all_repo.sh`
+
+### DevOps
+
+| Workflow\Branch          | main                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| PX4-Autopilot(hkust_nxt) | ![PX4-Autopilot(hkust_nxt)](https://github.com/HKUST-Aerial-Robotics/NxtPX4/actions/workflows/px4-autopilot.yml/badge.svg?branch=main) |
+
 
 ### hardware quick start
 
