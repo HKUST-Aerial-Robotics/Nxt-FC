@@ -1,6 +1,6 @@
 # NxtPX4
 
-<img src="image/README/1683206596601.png" alt="1683206596601"  />
+<img src="./image/README/1683206596601.png" alt="1683206596601"  />
 
 > All GPIO & function small size PX4 for UAV research for HKUST UAV-Group
 
