@@ -97,10 +97,17 @@ in v1.0.1 design, the original idea is to make ESC connector order weird, to mak
 
 update repo using script: `./update_all_repo.sh`
 
+
+
+## TODO
+
+- [ ] Develop branch back to normal HIGHRES_IMU
+- [ ] remove MPU6500
+- [ ] replace 0420 Inductor with 05xx inductor
+
 ## Troubleshooting
 
 TODO
 
 1. ESC RPM report cannot run with MAVRos /mavros/imu/data
 
-### STM32 flash protection
