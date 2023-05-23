@@ -32,6 +32,16 @@ Hardware quick review
 
 ## Setting up NxtPX4
 
+![1684855176787](image/README/1684855176787.png)
+
+---
+
+Basic connection with receiver & ESC & computer
+
+![1684855211000](image/README/1684855211000.png)
+
+If your receiver uses Sbus please connect the pads in red circle
+
 ### Compile PX4Firmware
 
 #### Using make
@@ -66,6 +76,37 @@ Set **MAV_0_CONFIG** with **TELEM 2**
 
 ![1683206065854](image/README/1683206065854.png)
 
+#### HIGH_RES_IMU and High frequency /imu/data
+
+create file in your tf-card  /etc/extras.txt
+
+`mavlink stream -d /dev/ttyS3 -s ATTITUDE -r 200 `
+
+`mavlink stream -d /dev/ttyS3 -s HIGHRES_IMU -r 1000`
+
+then using the following settings
+
+IMU_GYRO_RATEMAX: 2000Hz
+
+IMU_INTEG_RATE: 400Hz
+
+MAV_0_MODE: External vision
+
+Set Uart4 to 921600
+
+MAV_0_RATE 92160B/s
+
+**after these settings you will have approximate 500Hz /imu/data_raw /imu/data**
+
+if you want to have presice 500Hz imu/data_raw and 200Hz imu/data
+
+SYS_MC_EST_GROUP: Q attitude estimator
+
+
+---
+
+
+
 ## Hardware development
 
 * Kicad 7.0 required
@@ -97,8 +138,6 @@ in v1.0.1 design, the original idea is to make ESC connector order weird, to mak
 
 update repo using script: `./update_all_repo.sh`
 
-
-
 ## TODO
 
 - [ ] Develop branch back to normal HIGHRES_IMU
@@ -110,4 +149,3 @@ update repo using script: `./update_all_repo.sh`
 TODO
 
 1. ESC RPM report cannot run with MAVRos /mavros/imu/data
-
