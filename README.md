@@ -8,14 +8,14 @@ Dimension of NxtPX4: 27mmx32mmx8mm
 
 Hardware quick review
 
-| UART   | TTY        | SerialName  | Suggest Funcion                |
-| ------ | ---------- | ----------- | ------------------------------ |
-| USART1 | /dev/ttyS0 | SERIAL_GPS1 | AUX                            |
-| USART2 | /dev/ttyS1 | SERIAL_GPS2 | AUX                            |
-| USART3 | /dev/ttyS2 | SERIAL_TEL1 | ESC report                     |
-| UART4  | /dev/ttyS3 | SERIAL_TEL2 | Connect with offboard computer |
-| UART5  | /dev/ttyS4 | SERIAL_RC   | Receiver                       |
-| UART7  | /dev/ttyS5 | SERIAL_TEL3 | AUX                            |
+| UART   | TTY             | SerialName       | Suggest Funcion                                                                      |
+| ------ | --------------- | ---------------- | ------------------------------------------------------------------------------------ |
+| USART1 | /dev/ttyS0      | SERIAL_GPS1      | AUX                                                                                  |
+| USART2 | /dev/ttyS1      | SERIAL_GPS2      | AUX                                                                                  |
+| USART3 | ~~/dev/ttyS2~~ | ~~SERIAL_TEL1~~ | ~~ESC report~~ (**not recommend to use because it serves as debug console**) |
+| UART4  | /dev/ttyS3      | SERIAL_TEL2      | Connect with offboard computer                                                       |
+| UART5  | /dev/ttyS4      | SERIAL_RC        | Receiver                                                                             |
+| UART7  | /dev/ttyS5      | SERIAL_TEL3      | AUX                                                                                  |
 
 # Getting start
 
@@ -102,10 +102,7 @@ if you want to have presice 500Hz imu/data_raw and 200Hz imu/data
 
 SYS_MC_EST_GROUP: Q attitude estimator
 
-
 ---
-
-
 
 ## Hardware development
 
@@ -118,6 +115,10 @@ SYS_MC_EST_GROUP: Q attitude estimator
 in v1.0.1 design, the original idea is to make ESC connector order weird, to make user notice the PINOUT sequence, however in practice, Rx pin is too close to Vbat pin, which leads to MCU damage at the moment power on or off if the cable is not titely installed.  Noticing that, in v1.1.0 design, we change the ESC pinout order.
 
 ## Frameware development
+
+### Pre-build firmware and bootloader
+
+The pre-build firware and bootloader are in  `./firmware` dir, donwload and flash in corresponding with your hardware version
 
 ### Compile
 
@@ -140,9 +141,10 @@ update repo using script: `./update_all_repo.sh`
 
 ## TODO
 
-- [ ] Develop branch back to normal HIGHRES_IMU
+- [ ] ~~Develop branch back to normal HIGHRES_IMU~~
 - [ ] remove MPU6500
-- [ ] replace 0420 Inductor with 05xx inductor
+- [ ] ~~replace 0420 Inductor with 05xx inductor~~
+- [ ] refine pinout (v2.0 hardware)
 
 ## Troubleshooting
 
