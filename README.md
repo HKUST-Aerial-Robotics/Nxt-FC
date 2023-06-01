@@ -80,9 +80,11 @@ Set **MAV_0_CONFIG** with **TELEM 2**
 
 create file in your tf-card  /etc/extras.txt
 
-`mavlink stream -d /dev/ttyS3 -s ATTITUDE -r 200 `
+```txt
+mavlink stream -d /dev/ttyS3 -s ATTITUDE -r 200
 
-`mavlink stream -d /dev/ttyS3 -s HIGHRES_IMU -r 1000`
+mavlink stream -d /dev/ttyS3 -s HIGHRES_IMU -r 1000
+```
 
 then using the following settings
 
