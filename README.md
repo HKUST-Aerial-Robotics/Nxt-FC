@@ -32,7 +32,17 @@ Hardware quick review
 
 ## Setting up NxtPX4
 
+#### Notice!
+
+We found a silkscreen printing error on the **USART 1 and 2** of the V1.2.3 PCB. The labels for Tx and Rx are incorrect. Please follow the silk screen in the modified version V1.2.3.1(picture below)
+
+![NxtPX4_back](image/README/NxtPX4_back-1688972292885-2.png)
+
+The only difference between v1.2.3 and v.1.2.3.1 is the silkscreen of USART1 and USART2
+
 ![1684855176787](image/README/1684855176787.png)
+
+(connection for v1.2.3)
 
 ---
 
