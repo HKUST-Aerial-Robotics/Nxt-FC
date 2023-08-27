@@ -59,7 +59,7 @@ If your receiver uses Sbus please connect the pads in red circle
 1. go to PX4-Autoplilot directory
 2. using ` make hkust_nxt_bootloader` to compile bootloader
 3. Press boot button on board and then connect it with computer, flash bootloader with Betaflight configurator or STM32programmer
-4. using `make hkust_nxt` to compile firmware, and flash `.px4` through QGC
+4. using `make hkust_nxt` to compile firmware, and flash `.px4` through QG
 
 #### Using Docker
 
@@ -160,6 +160,10 @@ update repo using script: `./update_all_repo.sh`
 
 ## Troubleshooting
 
-TODO
 
+
+## TODO
 1. ESC RPM report cannot run with MAVRos /mavros/imu/data
+
+### Maybe V2.0-Dual
+1. Dual BMI 088
