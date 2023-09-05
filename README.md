@@ -1,6 +1,6 @@
 # NxtPX4
 
-<img src="./image/README/1683206596601.png" alt="1683206596601"  />
+<img src="https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125077.png" alt="1683206596601"  />
 
 > All GPIO & function small size PX4 for UAV research for HKUST UAV-Group
 
@@ -36,11 +36,11 @@ Hardware quick review
 
 We found a silkscreen printing error on the **USART 1 and 2** of the V1.2.3 PCB. The labels for Tx and Rx are incorrect. Please follow the silk screen in the modified version V1.2.3.1(picture below)
 
-![NxtPX4_back](image/README/NxtPX4_back-1688972292885-2.png)
+![NxtPX4_back](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125055.png)
 
 The only difference between v1.2.3 and v.1.2.3.1 is the silkscreen of USART1 and USART2
 
-![1684855176787](image/README/1684855176787.png)
+![1684855176787](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125183.png)
 
 (connection for v1.2.3)
 
@@ -48,7 +48,7 @@ The only difference between v1.2.3 and v.1.2.3.1 is the silkscreen of USART1 and
 
 Basic connection with receiver & ESC & computer
 
-![1684855211000](image/README/1684855211000.png)
+![1684855211000](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125443.png)
 
 If your receiver uses Sbus please connect the pads in red circle
 
@@ -72,19 +72,19 @@ If your receiver uses Sbus please connect the pads in red circle
 
 Set power_source  **Power Module**, then calibrate voltage and current analog data
 
-![1683205772803](image/README/1683205772803.png)
+![1683205772803](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060126575.png)
 
 #### Receiver
 
 Set **RC_PORT_CONFIG** with **Radio controller**
 
-![1683205983224](image/README/1683205983224.png)
+![1683205983224](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060126964.png)
 
 #### MAVLink
 
 Set **MAV_0_CONFIG** with **TELEM 2**
 
-![1683206065854](image/README/1683206065854.png)
+![1683206065854](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060127686.png)
 
 #### HIGH_RES_IMU and High frequency /imu/data
 
@@ -154,7 +154,7 @@ update repo using script: `./update_all_repo.sh`
 ## TODO
 
 - [ ] ~~Develop branch back to normal HIGHRES_IMU~~
-- [ ] remove MPU6500
+- [ ] ~~remove MPU6500 ~~
 - [ ] ~~replace 0420 Inductor with 05xx inductor~~
 - [ ] refine pinout (v2.0 hardware)
 
