@@ -2,7 +2,7 @@ name: PX4-Autopilot(hkust_nxt) CI Test
 
 on:
   push:
-    branches: [ "main" , "develop", "release_*"]
+    branches: [ "main" , "release_*"]
     paths:
       - '.github/workflows/px4-autopilot.yaml'
       - 'PX4-Autopilot'
