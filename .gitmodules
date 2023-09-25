@@ -1,7 +1,7 @@
 [submodule "PX4-Autopilot"]
 	path = PX4-Autopilot
 	url = https://github.com/Peize-Liu/PX4-Autopilot.git
-	branch = develop
+	branch = release_v1.2.x
 [submodule "NxtPX4-Hardware"]
 	path = NxtPX4-Hardware
 	url = https://github.com/Peize-Liu/NxtPX4-Hardware.git
