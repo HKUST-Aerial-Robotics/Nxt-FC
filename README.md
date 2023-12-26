@@ -1,5 +1,7 @@
 # NxtPX4
 
+## We are now supporting PX4 1.14.x firmware！ Check compile section for more information
+
 <img src="https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125077.png" alt="1683206596601"  />
 
 > All GPIO & function small size PX4 for UAV research for HKUST UAV-Group
@@ -18,6 +20,12 @@ Hardware quick review
 | UART7  | /dev/ttyS5      | SERIAL_TEL3      | AUX                                                                                  |
 
 # Getting start
+
+## Use precompiled bootloader and firmware
+
+please check firmware dir
+
+## Compile locally
 
 1. clone repo.
 2. run init repo script:  `./init_all_repo.sh`
@@ -56,10 +64,14 @@ If your receiver uses Sbus please connect the pads in red circle
 
 #### Using make
 
+**Note！！！**
+
+For PX4 1.14.x firmware please use branch *develop_v1.14.x*. I am manually merging with the latest main branch from PX4.
+
 1. go to PX4-Autoplilot directory
-2. using ` make hkust_nxt_bootloader` to compile bootloader
+2. using ` make hkust_nxt_bootloader` to compile bootloader. For *develop_v1.14.x* use `make hkust_nxt-v1_bootloader`
 3. Press boot button on board and then connect it with computer, flash bootloader with Betaflight configurator or STM32programmer
-4. using `make hkust_nxt` to compile firmware, and flash `.px4` through QG
+4. using `make hkust_nxt` to compile firmware, and flash `.px4` through QGC. . For *develop_v1.14.x* use `make hkust_nxt-v1`
 
 #### Using Docker
 
