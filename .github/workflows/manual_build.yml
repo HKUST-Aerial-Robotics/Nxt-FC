@@ -1,0 +1,41 @@
+name: Manual Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch name'
+        type: string
+        required: true
+        default: 'main'
+
+      target_name:
+        description: 'Target name'
+        type: string
+        required: true
+        default: 'hkust_nxt-v1'
+
+jobs:
+  build_firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Submodule update
+        run: git submodule update --init --recursive
+
+      - name: Build Bootloader
+        run: echo y | docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: hkust_nxt_bootloader
+          path: PX4-Autopilot/build/${{ inputs.target_name }}_bootloader/${{ inputs.target_name }}_bootloader.elf
+
+      - name: Build PX4-Autopilot
+        run: echo y | docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }}_bootloader
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: hkust_nxt_default
+          path: PX4-Autopilot/build/${{ inputs.target_name }}_default/${{ inputs.target_name }}_default.px4
