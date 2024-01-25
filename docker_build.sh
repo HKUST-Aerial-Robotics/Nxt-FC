@@ -7,11 +7,12 @@ declare -A version_map
 version_map["develop_v1.14.x"]="px4io/px4-dev-nuttx-focal:2023-12-04"
 
 # Set parameters
-DOCEKR_NAME=NxtCompileContainer;
+DOCEKR_NAME="";
 DOCKER_IMAGE_VERSION="";
 VOLUME_PATH="";
 set_param(){
   DOCKER_IMAGE_VERSION=${version_map[$1]}
+  DOCEKR_NAME="$2"
   echo "Docker image version: ${DOCKER_IMAGE_VERSION}"
 }
 
@@ -116,7 +117,7 @@ check_docker(){
 
 main(){
   switch_branch $1 $3
-  set_param $1
+  set_param $1 $2
   check_docker
   docker_exist=$(docker ps -a|grep ${DOCEKR_NAME})
   if [ -n "$docker_exist" ]
