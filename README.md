@@ -75,8 +75,12 @@ For PX4 1.14.x firmware please use branch *develop_v1.14.x*. I am manually mergi
 
 #### Using Docker
 
-1. compile firmware ` ./start_docker.sh hkust_nxt`
-2. compile bootloader ` ./start_docker.sh hkust_nxt_bootloader`
+```bash
+Usage:    ./docker_build.sh <branch_name> <frameware_name>
+```
+
+1. compile firmware ` ./docker_build.sh develop_v1.14.x hkust_nxt-v1`
+2. compile bootloader ` ./docker_build.sh develop_v1.14.x hkust_nxt-v1_bootloader`
 
 ### PX4 Configuration settings
 

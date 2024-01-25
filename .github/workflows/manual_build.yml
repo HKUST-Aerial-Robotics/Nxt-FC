@@ -25,7 +25,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Build Bootloader
-        run: ./docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }} y
+        run: ./docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }}_bootloader y
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -33,7 +33,7 @@ jobs:
           path: PX4-Autopilot/build/${{ inputs.target_name }}_bootloader/${{ inputs.target_name }}_bootloader.elf
 
       - name: Build PX4-Autopilot
-        run: ./docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }}_bootloader y
+        run: ./docker_build.sh ${{ inputs.branch_name }} ${{ inputs.target_name }} y
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
