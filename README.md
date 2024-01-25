@@ -153,8 +153,13 @@ The pre-build firware and bootloader are in  `./firmware` dir, donwload and flas
 
 #### Containerized compilation (recommended)
 
-* Frameware compile: start_docker.sh hkust_nxt
-* bootloader compile: start_docker.sh hkust_nxt_bootloader
+Build a specific version of PX4 firmware using docker container.
+
+```bash
+Usage:    ./docker_build.sh <branch_name> <frameware_name>
+Example:  ./docker_build.sh develop_v1.14.x hkust_nxt-v1
+          ./docker_build.sh develop_v1.14.x hkust_nxt-v1_bootloader
+```
 
 ### Develop
 

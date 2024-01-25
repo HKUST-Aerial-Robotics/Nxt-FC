@@ -23,17 +23,17 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Build Bootloader
-      run: PX4-Autopilot/start_docker.sh hkust_nxt_bootloader
+      run: ./docker_build.sh develop_v1.14.x hkust_nxt-v1_bootloader y
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: hkust_nxt_bootloader
-        path: PX4-Autopilot/build/hkust_nxt_bootloader/hkust_nxt_bootloader.elf
+        path: PX4-Autopilot/build/hkust_nxt-v1_bootloader/hkust_nxt-v1_bootloader.elf
 
     - name: Build PX4-Autopilot
-      run: PX4-Autopilot/start_docker.sh hkust_nxt
+      run: ./docker_build.sh develop_v1.14.x hkust_nxt-v1 y
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: hkust_nxt_default
-        path: PX4-Autopilot/build/hkust_nxt_default/hkust_nxt_default.px4
+        path: PX4-Autopilot/build/hkust_nxt-v1_default/hkust_nxt-v1_default.px4
