@@ -27,22 +27,24 @@ switch_branch(){
   fi
 
   # Switch branch
-  echo "Warning: this will remove all changes including untracked files"
-  read -p "Confirm?(Y/N)" ans
+  if [[ "$2" != [Yy] ]]; then
+    echo "Warning: this will remove all changes including untracked files"
+    read -p "Confirm?(Y/N)" ans
 
-  if [[ "$ans" == [Yy] ]]; then
-    echo "Confirmed"
-    git checkout -f $1
-    git clean -xdf -f
-    git submodule update --recursive
-    git submodule foreach --recursive git fetch --all
-    git submodule foreach --recursive git reset --hard
-    git submodule foreach --recursive git clean -fdx -f
+    if [[ "$ans" == [Yy] ]]; then
+      echo "Confirmed"
+      git checkout -f $1
+      git clean -xdf -f
+      git submodule update --recursive
+      git submodule foreach --recursive git fetch --all
+      git submodule foreach --recursive git reset --hard
+      git submodule foreach --recursive git clean -fdx -f
 
-    echo "Successfully switched to branch $1"
-  else
-    echo "Canceled"
-    exit 1
+      echo "Successfully switched to branch $1"
+    else
+      echo "Canceled"
+      exit 1
+    fi
   fi
 }
 
@@ -113,7 +115,7 @@ check_docker(){
 }
 
 main(){
-  switch_branch $1
+  switch_branch $1 $3
   set_param $1
   check_docker
   docker_exist=$(docker ps -a|grep ${DOCEKR_NAME})
@@ -128,9 +130,9 @@ main(){
   build_frameware $2
 }
 
-if [ $# -ne 2 ]
+if [ $# -ne 2 ] && [ $# -ne 3 ]
   then
     help
   else
-    main $1 $2
+    main $1 $2 $3
 fi
