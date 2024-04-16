@@ -1,86 +1,57 @@
-# NxtPX4
+# Nxt-FC DUAL
 
-## We are now supporting PX4 1.14.x firmware！ Check compile section for more information
 
-<img src="https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125077.png" alt="1683206596601"  />
+
+![Nxt-FC](https://khalil-picgo-1321910894.cos.ap-hongkong.myqcloud.com/images/202404161605587.png)
 
 > All GPIO & function small size PX4 for UAV research for HKUST UAV-Group
 
-Dimension of NxtPX4: 27mmx32mmx8mm
+ArduPilot and PX4 firmware are supported !
 
-Hardware quick review
+Dimension of Nxt-FC: 27mmx32mmx8mm
+
+Micoair is now producing Nxt-FC:  [Micoair official website](https://micoair.com/index.php/flightcontroller_nxtpx4v2/) [Taobao](https://item.taobao.com/item.htm?id=720171355815&spm=a1z10.1-c-s.w4004-25090944919.4.188ad2c4TMdjoU) [Ali-Express](https://www.aliexpress.com/item/1005006044318535.html?gps-id=pcStoreJustForYou&scm=1007.23125.137358.0&scm_id=1007.23125.137358.0&scm-url=1007.23125.137358.0&pvid=d0d3d352-9d44-4efb-a90d-83d814b7750d&_t=gps-id:pcStoreJustForYou,scm-url:1007.23125.137358.0,pvid:d0d3d352-9d44-4efb-a90d-83d814b7750d,tpp_buckets:668%232846%238108%231977&pdp_npi=4%40dis%21USD%2168.82%2168.82%21%21%21498.00%21498.00%21%402103094c17132550041616003e82e6%2112000035464129852%21rec%21HK%21%21AB&spm=a2g0o.store_pc_home.smartJustForYou_2005294076979.1005006044318535)
+
+![image-20240417000420113](https://khalil-picgo-1321910894.cos.ap-hongkong.myqcloud.com/images/202404170004223.png)
+
+![image-20240417000600083](https://khalil-picgo-1321910894.cos.ap-hongkong.myqcloud.com/images/202404170006223.png)
 
 | UART   | TTY             | SerialName       | Suggest Funcion                                                                      |
 | ------ | --------------- | ---------------- | ------------------------------------------------------------------------------------ |
-| USART1 | /dev/ttyS0      | SERIAL_GPS1      | AUX                                                                                  |
-| USART2 | /dev/ttyS1      | SERIAL_GPS2      | AUX                                                                                  |
-| USART3 | ~~/dev/ttyS2~~ | ~~SERIAL_TEL1~~ | ~~ESC report~~ (**not recommend to use because it serves as debug console**) |
-| UART4  | /dev/ttyS3      | SERIAL_TEL2      | Connect with offboard computer                                                       |
-| UART5  | /dev/ttyS4      | SERIAL_RC        | Receiver                                                                             |
-| UART7  | /dev/ttyS5      | SERIAL_TEL3      | AUX                                                                                  |
+| USART1 | /dev/ttyS0      | SERIAL_GPS1      |                                                                                   |
+| USART2 | /dev/ttyS1      | SERIAL_GPS2      |                                                                                   |
+| USART3 | /dev/ttyS2 | SERIAL_TEL1 |  |
+| UART4  | /dev/ttyS3      | SERIAL_TEL2      |                         |
+| UART5 | /dev/ttyS4 | SERIAL_RC | Receiver |
+| USART6 | /dev/ttyS5 | Debug       | Currently not available, can be enable |
+| UART7 | /dev/ttyS6     | SERIAL_TEL3      | AUX                                                                                  |
+| UART8 | /dev/ttyS7 | SERIAL_TEL4 | AUX |
 
-# Getting start
+## Getting start
 
-## Use precompiled bootloader and firmware
+### Use precompiled bootloader and firmware
 
-please check firmware dir
+1. Use the firmware files from ./firmware.
 
-## Compile locally
+2. QGC upgrade is also available.
 
-1. clone repo.
-2. run init repo script:  `./init_all_repo.sh`
-   it will take some time to clone all submodules into loccal
-3. Enter directory **NxtPX4-Hardware**:     `cd ./NxtPX4-Hardware`
-   you should notice that you are not on main branch, So Checkout to main branch using:  `git checkout -b main`
-4. cd back to NXTPX4 dir
-5. Enter directory **PX4-Autopilot**:   `cd ./PX4-Autopilot`
-   you should notice that you are not on main branch or develop branch. So checkout main branch to local and then checkout to develop branch to compile frameware for NxtPX4.
-   `git checkout -b main` and then `git checkout -b develop origin/develop`
-6. configure done !
+### Compile locally
 
-## Setting up NxtPX4
+Follow the PX4 standard approach.
 
-#### Notice!
+Bootloader:
 
-We found a silkscreen printing error on the **USART 1 and 2** of the V1.2.3 PCB. The labels for Tx and Rx are incorrect. Please follow the silk screen in the modified version V1.2.3.1(picture below)
-
-![NxtPX4_back](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125055.png)
-
-The only difference between v1.2.3 and v.1.2.3.1 is the silkscreen of USART1 and USART2
-
-![1684855176787](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125183.png)
-
-(connection for v1.2.3)
-
----
-
-Basic connection with receiver & ESC & computer
-
-![1684855211000](https://raw.githubusercontent.com/Peize-Liu/my-images/master/202309060125443.png)
-
-If your receiver uses Sbus please connect the pads in red circle
-
-### Compile PX4Firmware
-
-#### Using make
-
-**Note！！！**
-
-For PX4 1.14.x firmware please use branch *develop_v1.14.x*. I am manually merging with the latest main branch from PX4.
-
-1. go to PX4-Autoplilot directory
-2. using ` make hkust_nxt_bootloader` to compile bootloader. For *develop_v1.14.x* use `make hkust_nxt-v1_bootloader`
-3. Press boot button on board and then connect it with computer, flash bootloader with Betaflight configurator or STM32programmer
-4. using `make hkust_nxt` to compile firmware, and flash `.px4` through QGC. . For *develop_v1.14.x* use `make hkust_nxt-v1`
-
-#### Using Docker
-
-```bash
-Usage:    ./docker_build.sh <branch_name> <frameware_name>
+```shell
+make hkust_nxt-dual_bootloader
 ```
 
-1. compile firmware ` ./docker_build.sh develop_v1.14.x hkust_nxt-v1`
-2. compile bootloader ` ./docker_build.sh develop_v1.14.x hkust_nxt-v1_bootloader`
+Firmware:
+
+```shell
+make hkust_nxt-dual
+```
+
+## Setting up Nx-FC
 
 ### PX4 Configuration settings
 
@@ -124,67 +95,8 @@ Set Uart4 to 921600
 
 MAV_0_RATE 92160B/s
 
-**after these settings you will have approximate 500Hz /imu/data_raw /imu/data**
-
-if you want to have presice 500Hz imu/data_raw and 200Hz imu/data
-
-SYS_MC_EST_GROUP: Q attitude estimator
-
----
-
-## Hardware development
-
-* Kicad 7.0 required
-* Create new branch for your own features
-* Only general hardware features can be merged into main branch
-
-### Caution!!!!!!!!
-
-in v1.0.1 design, the original idea is to make ESC connector order weird, to make user notice the PINOUT sequence, however in practice, Rx pin is too close to Vbat pin, which leads to MCU damage at the moment power on or off if the cable is not titely installed.  Noticing that, in v1.1.0 design, we change the ESC pinout order.
-
-## Frameware development
-
-### Pre-build firmware and bootloader
-
-The pre-build firware and bootloader are in  `./firmware` dir, donwload and flash in corresponding with your hardware version
-
-### Compile
-
-#### Local compilation
-
-* Frameware compile: make hkust_nxt
-* bootloader compile: make hkust_nxt_bootloader
-
-#### Containerized compilation (recommended)
-
-Build a specific version of PX4 firmware using docker container.
-
-```bash
-Usage:    ./docker_build.sh <branch_name> <frameware_name>
-Example:  ./docker_build.sh develop_v1.14.x hkust_nxt-v1
-          ./docker_build.sh develop_v1.14.x hkust_nxt-v1_bootloader
-```
-
-### Develop
-
-* Create new branch named as **feature-xxx(feature info)** from **develop** branch to start your own feature development
-* After test your own feature, mereged into develop branch and push a pull request (only general features will be accepted)
-
-update repo using script: `./update_all_repo.sh`
+**after these settings you will have  250Hz /imu/data_raw /imu/data**
 
 ## TODO
 
-- [ ] ~~Develop branch back to normal HIGHRES_IMU~~
-- [ ] ~~remove MPU6500 ~~
-- [ ] ~~replace 0420 Inductor with 05xx inductor~~
-- [ ] refine pinout (v2.0 hardware)
-
-## Troubleshooting
-
-
-
-## TODO
-1. ESC RPM report cannot run with MAVRos /mavros/imu/data
-
-### Maybe V2.0-Dual
-1. Dual BMI 088
+- [ ]  500Hz stable firmware based on PX4 1.14 
